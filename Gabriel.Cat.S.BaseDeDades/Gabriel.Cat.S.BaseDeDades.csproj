@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Excepciones\" />
+    <Folder Include="Conversiones\" />
+    <Folder Include="BasesDeDatos\" />
+    <Folder Include="Extensión\" />
+    <Folder Include="Interficies\" />
+  </ItemGroup>
+
+</Project>
