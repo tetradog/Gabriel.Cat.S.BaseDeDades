@@ -3,12 +3,23 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 using Gabriel.Cat.S.BaseDeDades;
+using Gabriel.Cat.S.Utilitats;
 
 namespace Gabriel.Cat.S.Extension
 {
     public static class ObjectExtension
     {
-        public static List<KeyValuePair<string,object>> ToNameValuePair(this object obj)
+        public static string GetNameSQL(this object obj)
+        {
+            Type tipo = obj.GetType();
+            string name;
+            NameSQL nameSQL = tipo.CustomAttributes.OfType<NameSQL>().FirstOrDefault() as NameSQL;
+            if (nameSQL != null)
+                name = nameSQL.ToString();
+            else name = tipo.Name;
+            return name;
+        }
+        public static List<KeyValuePair<string,object>> GetPropertiesNameValuePair(this object obj)
         {
             List<Utilitats.Propiedad> propiedades=obj.GetPropiedades();
             List<KeyValuePair<string, object>> propiedadesSQL = new List<KeyValuePair<string, object>>();
@@ -38,7 +49,7 @@ namespace Gabriel.Cat.S.Extension
             for(int i=0;i<propiedades.Count;i++)
             {
                 //miro si tiene el atributo ignore
-                if (propiedades[i].Info.Atributos.OfType<IgnoreSQL>().Count() == 0)
+                if (PropiedadSerializable(propiedades[i])&&propiedades[i].Info.Atributos.OfType<IgnoreSQL>().Count() == 0)
                 {
                     //miro si tiene el atributo name
                     nameSQL =propiedades[i].Info.Atributos.Filtra((atr)=>atr is NameSQL).FirstOrDefault() as NameSQL;
@@ -51,6 +62,15 @@ namespace Gabriel.Cat.S.Extension
 
             return propiedadesSQL;
         }
+       
+        private static bool PropiedadSerializable(Propiedad propiedad)
+        {
+            bool esSerializable = propiedad.Info.Uso==(UsoPropiedad.Get|UsoPropiedad.Set);
+            if (!esSerializable && propiedad.Info.Tipo.ImplementInterficie(typeof(IList<>)))
+                esSerializable = true;
 
+            
+            return esSerializable;
+        }
     }
 }
