@@ -8,8 +8,12 @@
     <Folder Include="Excepciones\" />
     <Folder Include="Conversiones\" />
     <Folder Include="BasesDeDatos\" />
-    <Folder Include="Extensión\" />
     <Folder Include="Interficies\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Gabriel.Cat.S.Seguretat" Version="1.0.2.2-Preview1.0.0" />
+    <PackageReference Include="Gabriel.Cat.S.Utilitats" Version="1.0.4.3-preview1.0.9" />
   </ItemGroup>
 
 </Project>

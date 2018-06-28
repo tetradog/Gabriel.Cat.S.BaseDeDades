@@ -9,11 +9,11 @@ namespace Gabriel.Cat.S.BaseDeDades
     /// Nombres de tablas y campos
     /// </summary>
     /// 
-    public class Name:System.Attribute
+    public class NameSQL:System.Attribute
     {
 
         string name;
-        public Name(string name)
+        public NameSQL(string name)
         {
             this.name = name;
         }
