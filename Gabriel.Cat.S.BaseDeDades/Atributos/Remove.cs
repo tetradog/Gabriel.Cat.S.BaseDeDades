@@ -15,7 +15,6 @@ namespace Gabriel.Cat.S.BaseDeDades
             Delete
         }
 
-
         public Option OptionOnDelete { get; private set; }
 
         public RemoveSQL(Option optionOnDelete=Option.Null)
