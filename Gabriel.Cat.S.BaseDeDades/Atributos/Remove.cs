@@ -4,6 +4,7 @@ using System.Text;
 
 namespace Gabriel.Cat.S.BaseDeDades
 {
+
     [AttributeUsage(System.AttributeTargets.Property)]
     public class RemoveSQL:System.Attribute
     {
