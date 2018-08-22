@@ -5,7 +5,7 @@ using System.Text;
 namespace Gabriel.Cat.S.BaseDeDades
 {
 
-    [AttributeUsage(System.AttributeTargets.Property)]
+    [AttributeUsage(System.AttributeTargets.Property,AllowMultiple =false)]
     public class RemoveSQL:System.Attribute
     {
         public enum Option

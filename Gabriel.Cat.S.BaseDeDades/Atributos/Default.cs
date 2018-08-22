@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Gabriel.Cat.S.BaseDeDades
 {//creo que solo pueden ser valores simples...por lo que veo son valores basicos y funciones
-    [AttributeUsage(AttributeTargets.Property)]
+    [AttributeUsage(AttributeTargets.Property,AllowMultiple =false)]
     /// <summary>
     /// Son los valores por defecto de un objeto
     /// </summary>

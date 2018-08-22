@@ -8,7 +8,7 @@ namespace Gabriel.Cat.S.BaseDeDades
     /// <summary>
     /// Se usa para decir que se ha actualizado el tipo y saber cual era antes.
     /// </summary>
-    [AttributeUsage(AttributeTargets.Class)]
+    [AttributeUsage(AttributeTargets.Class,AllowMultiple =false)]
     public class OldVersion : System.Attribute
     {
         public struct UpdateClass
