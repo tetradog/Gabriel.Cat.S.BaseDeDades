@@ -8,24 +8,21 @@ namespace Gabriel.Cat.S.BaseDeDades
     [System.AttributeUsage(System.AttributeTargets.Class)]
     public class CargarClaseSQL:System.Attribute
     {
-        public enum CargaInicial
+        public enum Carga
         {
             Id,
             /// <summary>
-            /// Se cargaran las propiedades que esten marcadas
+            /// Se cargaran las propiedades que esten marcadas, si se libera memoria ram las que estan marcadas se omitiran.
             /// </summary>
             Minima,
             Toda
         }
-        public CargarClaseSQL(CargaInicial carga)
+        public CargarClaseSQL(Carga carga)
         {
-            this.Carga = carga;
+            this.Valor = carga;
         }
-        public CargaInicial Carga { get; private set; }
-        public static object Update(object oldObj,object newObject)
-        {
-            return newObject;
-        }
+        public Carga Valor { get; private set; }
+
 
     }
 }
