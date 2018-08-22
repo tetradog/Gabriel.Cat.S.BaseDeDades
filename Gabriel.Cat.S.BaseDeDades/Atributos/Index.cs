@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace Gabriel.Cat.S.BaseDeDades.Atributos
+namespace Gabriel.Cat.S.BaseDeDades
 {
     [AttributeUsage(AttributeTargets.Property)]
-    public class Index:Constraint
+    public class Index:ConstraintWithId
     {
-        public Index() : base("Index") { }
+
+        public Index(object idIndex=null) : base("Index",idIndex) {
+        
+
+        }
+
     }
 }
