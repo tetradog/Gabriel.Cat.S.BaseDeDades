@@ -11,5 +11,6 @@ namespace Gabriel.Cat.S.BaseDeDades
     [System.AttributeUsage(System.AttributeTargets.Property)]
     public class IgnoreSQL:System.Attribute
     {
+ 
     }
 }

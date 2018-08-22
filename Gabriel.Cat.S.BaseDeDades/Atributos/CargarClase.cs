@@ -4,6 +4,7 @@ using System.Text;
 
 namespace Gabriel.Cat.S.BaseDeDades
 {
+   
     [System.AttributeUsage(System.AttributeTargets.Class)]
     public class CargarClaseSQL:System.Attribute
     {
@@ -21,5 +22,10 @@ namespace Gabriel.Cat.S.BaseDeDades
             this.Carga = carga;
         }
         public CargaInicial Carga { get; private set; }
+        public static object Update(object oldObj,object newObject)
+        {
+            return newObject;
+        }
+
     }
 }
