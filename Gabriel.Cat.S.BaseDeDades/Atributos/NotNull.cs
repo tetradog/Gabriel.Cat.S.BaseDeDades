@@ -5,7 +5,8 @@ using System.Text;
 namespace Gabriel.Cat.S.BaseDeDades
 {
     [AttributeUsage(AttributeTargets.Property,AllowMultiple =false)]
-    public class NotNullSQL : System.Attribute
+    public class NotNullSQL : Constraint
     {
+        public NotNullSQL() : base("NotNull") { }
     }
 }

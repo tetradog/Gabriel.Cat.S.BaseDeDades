@@ -5,8 +5,9 @@ using System.Text;
 namespace Gabriel.Cat.S.BaseDeDades
 {
     //si hay más es que es compuesta
-    [System.AttributeUsage(System.AttributeTargets.Property)]
-    public class PrimaryKeySQL:System.Attribute
+    [System.AttributeUsage(System.AttributeTargets.Property,AllowMultiple =false)]
+    public class PrimaryKeySQL:Constraint
     {
+        public PrimaryKeySQL() : base("PrimaryKey") { }
     }
 }

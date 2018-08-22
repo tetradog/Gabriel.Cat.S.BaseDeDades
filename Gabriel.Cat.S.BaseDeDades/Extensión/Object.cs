@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 using Gabriel.Cat.S.BaseDeDades;
@@ -11,14 +10,10 @@ namespace Gabriel.Cat.S.Extension
     {
         public static string GetNameSQL(this object obj)
         {
-            Type tipo = obj.GetType();
-            string name;
-            NameSQL nameSQL = tipo.CustomAttributes.OfType<NameSQL>().FirstOrDefault() as NameSQL;
-            if (nameSQL != null)
-                name = nameSQL.ToString();
-            else name = tipo.Name;
-            return name;
+            return obj.GetType().GetNameSQL();
+
         }
+
         public static List<KeyValuePair<string,object>> GetPropertiesNameValuePair(this object obj)
         {
             List<Utilitats.Propiedad> propiedades=obj.GetPropiedades();

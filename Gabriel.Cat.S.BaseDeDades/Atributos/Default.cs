@@ -3,22 +3,26 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Gabriel.Cat.S.BaseDeDades
-{//creo que solo pueden ser valores simples...por lo que veo son valores basicos y funciones
+{
     [AttributeUsage(AttributeTargets.Property,AllowMultiple =false)]
     /// <summary>
     /// Son los valores por defecto de un objeto
     /// </summary>
-    public class DefaultSQL:System.Attribute
+    public class DefaultSQL:Constraint
     {
         /// <summary>
         /// Forman parte del objeto por defecto
         /// </summary>
-        public string DefaultValue { get; private set; }
+        public string Value { get; private set; }
         public bool EsUnaFuncion { get; private set; }
-        public DefaultSQL( object valorPorDefecto,bool esUnaFuncion=false)
+        public DefaultSQL( object valorPorDefectoOFuncion,bool esUnaFuncion=false):base("Default")
         {
-            DefaultValue = valorPorDefecto.ToString();
+            Value = valorPorDefectoOFuncion.ToString();
             EsUnaFuncion = esUnaFuncion;
+        }
+        public override string ToString()
+        {
+            return Value;
         }
     }
 }
