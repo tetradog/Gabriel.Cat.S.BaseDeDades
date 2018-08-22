@@ -4,6 +4,7 @@ using System.Text;
 
 namespace Gabriel.Cat.S.BaseDeDades
 {//creo que solo pueden ser valores simples...por lo que veo son valores basicos y funciones
+    [AttributeUsage(AttributeTargets.Property)]
     /// <summary>
     /// Son los valores por defecto de un objeto
     /// </summary>
@@ -12,12 +13,12 @@ namespace Gabriel.Cat.S.BaseDeDades
         /// <summary>
         /// Forman parte del objeto por defecto
         /// </summary>
-        public string[] ParametrosPorDefecto { get; private set; }
-        public DefaultSQL(params object[] parametrosPorDefecto)
+        public string DefaultValue { get; private set; }
+        public bool EsUnaFuncion { get; private set; }
+        public DefaultSQL( object valorPorDefecto,bool esUnaFuncion=false)
         {
-            ParametrosPorDefecto = new string[parametrosPorDefecto.Length];
-            for (int i = 0; i < parametrosPorDefecto.Length; i++)
-                ParametrosPorDefecto[i] = parametrosPorDefecto[i].ToString();
+            DefaultValue = valorPorDefecto.ToString();
+            EsUnaFuncion = esUnaFuncion;
         }
     }
 }
