@@ -5,10 +5,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Excepciones\" />
-    <Folder Include="Conversiones\" />
-    <Folder Include="BasesDeDatos\" />
-    <Folder Include="Interficies\" />
+    <Compile Remove="BasesDeDatos\**" />
+    <Compile Remove="Conversiones\**" />
+    <Compile Remove="Excepciones\**" />
+    <Compile Remove="Interficies\**" />
+    <EmbeddedResource Remove="BasesDeDatos\**" />
+    <EmbeddedResource Remove="Conversiones\**" />
+    <EmbeddedResource Remove="Excepciones\**" />
+    <EmbeddedResource Remove="Interficies\**" />
+    <None Remove="BasesDeDatos\**" />
+    <None Remove="Conversiones\**" />
+    <None Remove="Excepciones\**" />
+    <None Remove="Interficies\**" />
   </ItemGroup>
 
   <ItemGroup>

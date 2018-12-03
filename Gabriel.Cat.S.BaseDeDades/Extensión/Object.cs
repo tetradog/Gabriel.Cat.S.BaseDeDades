@@ -3,6 +3,7 @@ using System.Text;
 using System.Linq;
 using Gabriel.Cat.S.BaseDeDades;
 using Gabriel.Cat.S.Utilitats;
+using System;
 
 namespace Gabriel.Cat.S.Extension
 {
@@ -10,7 +11,7 @@ namespace Gabriel.Cat.S.Extension
     {
         public static string GetNameSQL(this object obj)
         {
-            return obj.GetType().GetNameSQL();
+            return TypeExtension.GetNameSQL(obj.GetType());
 
         }
 
@@ -66,6 +67,11 @@ namespace Gabriel.Cat.S.Extension
 
             
             return esSerializable;
+        }
+
+        public static string CreateTableSQL(this object obj,BaseDeDatos bd)
+        {
+            return TypeExtension.CreateTableSQL(obj.GetType(), bd);
         }
     }
 }
