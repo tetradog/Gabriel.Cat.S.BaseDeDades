@@ -24,6 +24,7 @@ namespace Gabriel.Cat.S.Extension
             List<System.Reflection.PropertyInfo> columnsObj = obj.GetProperties().Filtra((p) => p.CanRead && p.CanWrite && p.GetAttributes().Filtra((atr) => atr is IgnoreSQL).Count == 0);
             PropiedadTipo propiedad;
             NameSQL nameSql;
+            IList<Attribute> attributes;
             bool containsPrimaryKey = false;
             strCreate.Append(obj.GetNameSQL());
             strCreate.Append('(');
@@ -32,7 +33,7 @@ namespace Gabriel.Cat.S.Extension
             for (int i = 0; i < columnsObj.Count; i++)
             {
                 propiedad = new PropiedadTipo(columnsObj[i]);
-                nameSql = propiedad.Atributos.Filtra((atr)=>atr is NameSQL).FirstOrDefault() as NameSQL;
+                nameSql = propiedad.Atributos.Filtra((atr) => atr is NameSQL).FirstOrDefault() as NameSQL;
                 if (!containsPrimaryKey && propiedad.Atributos.Filtra((atr) => atr is PrimaryKeySQL).FirstOrDefault() as PrimaryKeySQL != null)
                     containsPrimaryKey = true;
 
@@ -42,10 +43,11 @@ namespace Gabriel.Cat.S.Extension
                 }
                 else strCreate.Append(propiedad.Nombre);
                 strCreate.Append(' ');
-                strCreate.Append(bd.GetSQLType(propiedad.Tipo,propiedad.Atributos.Filtra((atr) => atr is LimiteCampoSQL).FirstOrDefault() as LimiteCampoSQL));
+                strCreate.Append(bd.GetDeclaracionType(propiedad.Tipo, propiedad.Atributos.Filtra((atr) => atr is LimiteCampoSQL).FirstOrDefault() as LimiteCampoSQL));//si necesito más atributos los paso por aqui
+
                 strCreate.Append(',');
             }
-            if(!containsPrimaryKey)
+            if (!containsPrimaryKey)
             {
                 //se le tiene que poner una columna IdAutoIncrement
                 strCreate.Append("Id");
@@ -53,9 +55,17 @@ namespace Gabriel.Cat.S.Extension
                 strCreate.Append(bd.GetAutoIncrementColumn());
                 strCreate.Append(',');
             }
-            //constrains
-            //falta hacer
 
+            for (int i = 0; i < columnsObj.Count; i++)
+            {
+                attributes = new PropiedadTipo(columnsObj[i]).Atributos;
+                for (int j = 0; j < attributes.Count; j++)
+                {
+                    //constrains
+                    //falta hacer
+
+                }
+            }
             if (strCreate[strCreate.Length - 1] == ',')
                 strCreate.Remove(strCreate.Length - 1, 1);
             strCreate.Append(')');

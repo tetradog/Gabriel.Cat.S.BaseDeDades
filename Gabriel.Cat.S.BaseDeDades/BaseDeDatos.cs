@@ -6,7 +6,7 @@ namespace Gabriel.Cat.S.BaseDeDades
 {
     public abstract class BaseDeDatos
     {
-        public abstract string GetSQLType(Type typeCSharp, LimiteCampoSQL limiteCampoSQL=null);
-        public abstract bool GetAutoIncrementColumn();
+        public abstract string GetDeclaracionType(Type typeCSharp, LimiteCampoSQL limiteCampoSQL=null);
+        public abstract string GetAutoIncrementColumn();//poner otro nombre más descriptivo     
     }
 }
