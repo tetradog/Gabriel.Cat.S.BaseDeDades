@@ -45,6 +45,7 @@ namespace Gabriel.Cat.S.BaseDeDades
                 }
             }
         }
+
         public Type Base { get; private set; }
         public UpdateMethod UpdateMethod { get; private set; }
         /// <summary>

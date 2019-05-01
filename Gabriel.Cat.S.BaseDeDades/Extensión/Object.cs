@@ -47,12 +47,7 @@ namespace Gabriel.Cat.S.Extension
                 //miro si tiene el atributo ignore
                 if (PropiedadSerializable(propiedades[i])&&propiedades[i].Info.Atributos.OfType<IgnoreSQL>().Count() == 0)
                 {
-                    //miro si tiene el atributo name
-                    nameSQL =propiedades[i].Info.Atributos.Filtra((atr)=>atr is NameSQL).FirstOrDefault() as NameSQL;
-                    if (nameSQL != null)
-                        name = nameSQL.ToString();
-                    else name = propiedades[i].Info.Nombre;
-                    propiedadesSQL.Add(new KeyValuePair<string, object>(name, propiedades[i].Objeto));
+                    propiedadesSQL.Add(new KeyValuePair<string, object>(propiedades[i].GetNameSQL(), propiedades[i].Objeto));
                 }
             }
 

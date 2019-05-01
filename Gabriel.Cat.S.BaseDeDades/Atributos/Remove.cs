@@ -12,7 +12,7 @@ namespace Gabriel.Cat.S.BaseDeDades
         {
             Null,
             Default,
-            Delete
+            Cascade
         }
 
         public Option OptionOnDelete { get; private set; }

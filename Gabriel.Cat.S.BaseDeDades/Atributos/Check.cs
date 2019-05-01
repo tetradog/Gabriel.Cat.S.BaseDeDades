@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Gabriel.Cat.S.BaseDeDades
 {
-    [AttributeUsage(AttributeTargets.Class|AttributeTargets.Property)]
+    [AttributeUsage(AttributeTargets.Property)]
     public class Check: ConstraintWithId
     {
         //puede haber más de una...como las identifico?

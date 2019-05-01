@@ -3,10 +3,10 @@
     [System.AttributeUsage(System.AttributeTargets.Property)]
     public class LimiteCampoSQL:System.Attribute
     {
-        public LimiteCampoSQL(int limite)
+        public LimiteCampoSQL(params int[] limites)
         {
-            Limite = limite;
+            Limites = limites;
         }
-        public int Limite { get; private set; }
+        public int[] Limites { get; private set; }
     }
 }
