@@ -121,6 +121,7 @@ namespace Gabriel.Cat.S.Extension
                 strCreate.Append("),");
 
             }
+            //falta el ondelete y esas cosas
             if (strCreate[strCreate.Length - 1] == ',')
                 strCreate.Remove(strCreate.Length - 1, 1);
             strCreate.Append(");");
