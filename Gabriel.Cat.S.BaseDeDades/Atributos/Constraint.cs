@@ -33,5 +33,15 @@ namespace Gabriel.Cat.S.BaseDeDades
             str.Append(nameProperty);
             return str.ToString();
         }
+        protected abstract string GetDeclarationConstraintData();
+        public  string GetDeclarationConstraintLine(string tableName, string nameProperty)
+        {
+            StringBuilder strDeclaration = new StringBuilder();
+            strDeclaration.Append("Contraint ");
+            strDeclaration.Append(GetConstrainName(tableName,nameProperty));
+            strDeclaration.Append(" ");
+            strDeclaration.Append(GetDeclarationConstraintData());
+            return strDeclaration.ToString();
+        }
     }
 }

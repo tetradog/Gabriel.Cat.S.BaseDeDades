@@ -33,5 +33,14 @@ namespace Gabriel.Cat.S.BaseDeDades
         {
             return propiedad.Info.Atributos.Filtra((atr) => atr is OrderSQL).FirstOrDefault() as OrderSQL;
         }
+        public static string[] GetForeignKeySQL(this PropiedadTipo propiedad)
+        {
+            string[] primaryKeysTipoReference = propiedad.Tipo.GetPrimaryKeyColumnsSQL();
+            string[] foreignKey = new string[primaryKeysTipoReference.Length];
+            string nameSQL = propiedad.Tipo.GetNameSQL();
+            for (int i = 0; i < primaryKeysTipoReference.Length; i++)
+                foreignKey[i] = nameSQL + primaryKeysTipoReference[i];
+            return foreignKey;
+        }
     }
 }
